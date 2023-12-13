@@ -5,7 +5,6 @@ export function App(){
     return (
         <div>
             <Hello/>
-            <Message/>
         </div>
     )
 }
