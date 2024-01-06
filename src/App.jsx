@@ -1,5 +1,6 @@
 import { Age } from "./Age";
 import { AlertClock } from "./AlertClock";
+import { Clock } from "./Clock";
 import { Counter } from "./Counter";
 import { Hello } from "./Hello";
 import { Message } from "./Message";
@@ -20,6 +21,7 @@ export function App(){
             <Welcome name="Denise" age={24}/>
             <AlertClock onClick={handleShowTime}/>
             <Counter/>
+            <Clock/>
         </div>
     )
 }
