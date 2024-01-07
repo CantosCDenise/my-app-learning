@@ -26,7 +26,7 @@ export function App(){
             <Counter/>
             <Clock/>
             <MouseClicker/>
-            <MyUncontrolledForm/>
+            <MyForm/>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 function createData(){
     return {
@@ -10,6 +10,21 @@ function createData(){
 
 export function MyForm(){
     const [data, setData] = useState(createData())
+
+    const mountedRef = useRef(false)
+
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+        if (!mountedRef.current){
+        mountedRef.current = true
+        console.log("Mounting for the first time")
+        } else{
+            console.log("Mounting again for debug purposes")
+        }
+
+        inputRef.current?.focus()
+    }, [])
 
     function handleInputChange(event){
         const name = event.target.name
@@ -33,10 +48,11 @@ export function MyForm(){
         console.log('Login button pressed', data)
     }
 
+
     return (
         <form onSubmit={handleLoginFormSubmit}>
             <h1>My Form</h1>
-            <input name="username" value={data.username} onChange={handleInputChange} />      
+            <input ref={inputRef} name="username" value={data.username} onChange={handleInputChange} />      
             <input name="password" type="password" value={data.password} onChange={handleInputChange} /> 
             <input name="session" type="checkbox" checked={data.session} onChange={handleInputChange}/>
             <button type="submit" disabled={!data.username || !data.password}>Login</button>
@@ -59,3 +75,11 @@ export function MyForm(){
 //always use the form tag when implementing a form
 
 //we use the preventDefault method because we have an only 1 page web so we don't want the form to do its default behavior which is to go to another page
+
+//a ref is a pointer (a reference) to the DOM node which is rendered by react when it renders. So to focus an input we need to create a ref, attach the ref 
+    //to the input and the use this ref to focus the input itself.
+//useRef will return an object that will contain a single key called current
+
+//we use an optional chaining operator (inputRef.current?.focus()) to make sure current is something different than null or undefined.
+
+//another use of refs is to hold values which will persist between one render and the next but will not cause the component to re-render when they are updated. (ex: mountedRef)
