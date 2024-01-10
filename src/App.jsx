@@ -1,6 +1,7 @@
 import { Age } from "./Age";
 import { AlertClock } from "./AlertClock";
 import { Clock } from "./Clock";
+import { Container } from "./Container";
 import { Counter } from "./Counter";
 import { Hello } from "./Hello";
 import { Message } from "./Message";
@@ -17,7 +18,7 @@ export function App(){
         alert(now.toLocaleTimeString())
     }
     return (
-        <div>
+        <Container title={<h1>My Awesome App</h1>}>
             <Hello/>
             <Hello/>
             <Hello/>
@@ -35,6 +36,6 @@ export function App(){
                 { id: 4, name: 'Kate', age: 26},
                 { id: 5, name: 'Jane', age: 30},
             ]}/>
-        </div>
+        </Container>
     )
 }
