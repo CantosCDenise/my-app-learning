@@ -1,9 +1,11 @@
-import { Message } from "./Message";
+import { useContext } from "react"
+import { LanguageContext } from "./LanguageContext"
 
 export function Hello (){
+    const language = useContext(LanguageContext)
     return (
         <div>
-        <h2>Hello, World!</h2>
+        <h2>{language === "en" ? "Hello, World" : "Ciao, Mondo!"}</h2>
         </div>
     )
 }
