@@ -15,7 +15,6 @@ import { useState } from "react";
 import { FormCheck } from "./Checkpoint/FormCheck";
 import { Toggle } from "./Checkpoint/Toggle";
 import { TodoList } from "./TodoList";
-import { Lista } from "./Checkpoint/Lista";
 import { GithubUser } from "./GithubUser";
 import { HookCounter } from "./HookCounter";
 import { useCounter } from "./UseCounter";
@@ -34,6 +33,7 @@ export function App(){
     }
 
     const {counter, onIncrement} = useCounter()
+    const [username, setUsername] = useState("")
     return (
     <div>
         <button onClick={() => handleSetLanguage("it")}>IT</button>
@@ -44,6 +44,7 @@ export function App(){
             <Hello/>
             <Hello/>
             <Hello/>
+            <input value={username} onChange={(e) => setUsername(e.target.value)}/>
             <GithubUser username="cantoscdenise"/>
             <Message/>
             <Welcome name="Denise" age={24}/>
